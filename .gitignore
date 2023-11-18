@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/advance-csharp/.vs/advance-csharp
+/advance-csharp/obj
+/advance-csharp/bin/Debug/net6.0
