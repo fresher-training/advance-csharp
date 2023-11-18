@@ -6,7 +6,7 @@ using System;
 namespace advance_csharp.Controllers
 {
     [ApiController]
-    [Route("Weather")]
+    [Route("api/Weather")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

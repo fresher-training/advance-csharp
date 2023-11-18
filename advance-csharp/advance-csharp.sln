@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "advance-csharp", "advance-csharp.csproj", "{84B82375-6CE6-44FF-B14F-A45353C1D2CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "advance-csharp", "advance-csharp.csproj", "{84B82375-6CE6-44FF-B14F-A45353C1D2CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "advance-csharp.database", "..\advance-csharp.database\advance-csharp.database.csproj", "{B70802FC-F842-42B9-913D-6DE724208954}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{84B82375-6CE6-44FF-B14F-A45353C1D2CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84B82375-6CE6-44FF-B14F-A45353C1D2CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84B82375-6CE6-44FF-B14F-A45353C1D2CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B70802FC-F842-42B9-913D-6DE724208954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B70802FC-F842-42B9-913D-6DE724208954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B70802FC-F842-42B9-913D-6DE724208954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B70802FC-F842-42B9-913D-6DE724208954}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
