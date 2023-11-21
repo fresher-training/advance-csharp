@@ -1,4 +1,4 @@
-﻿namespace advance_csharp.Models.Request
+﻿namespace advance_csharp.dto.Request
 {
     public class WeatherForecastRequest
     {

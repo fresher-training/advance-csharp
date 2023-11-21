@@ -1,5 +1,5 @@
-using advance_csharp.Models.Request;
-using advance_csharp.Models.Response;
+using advance_csharp.dto.Request;
+using advance_csharp.dto.Response;
 using Microsoft.AspNetCore.Mvc;
 using System;
 

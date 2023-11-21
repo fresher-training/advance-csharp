@@ -1,9 +1,9 @@
 ﻿using advance_csharp.database;
-using advance_csharp.database.Models;
-using advance_csharp.Models.Response;
-using Microsoft.AspNetCore.Http;
+using advance_csharp.dto.Request.AppVersion;
+using advance_csharp.dto.Response.AppVersion;
+using advance_csharp.service;
+using advance_csharp.service.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace advance_csharp.Controllers
 {
@@ -11,16 +11,28 @@ namespace advance_csharp.Controllers
     [ApiController]
     public class ApplicationController : ControllerBase
     {
+        private IApplicationService _ApplicationService;
+
+        public ApplicationController()
+        {
+            _ApplicationService = new ApplicationService();
+        }
+
         [Route("get-version")]
         [HttpGet()]
-        public async Task<IEnumerable<AppVersion>> Get([FromQuery] string version)
+        public async Task<IActionResult> Get([FromQuery] AppVersionGetListRequest request)
         {
-            List<AppVersion> versions = new List<AppVersion>();
-            using (AdvanceCsharpContext context = new AdvanceCsharpContext())
+            try
             {
-                versions = await context.AppVersions.Where(a => a.Version.Contains(version)).ToListAsync();
+                AppVersionGetListResponse response = await _ApplicationService.GetApplicationVersionList(request);
+                return new JsonResult(response);
             }
-            return versions;
+            catch (Exception ex)
+            {
+                // send to logging service
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

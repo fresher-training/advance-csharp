@@ -1,4 +1,4 @@
-namespace advance_csharp.Models.Response
+namespace advance_csharp.dto.Response
 {
     public class WeatherForecastResponse
     {
