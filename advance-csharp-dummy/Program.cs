@@ -1,13 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using advance_csharp.database;
 using advance_csharp.database.Models;
+using advance_csharp_dummy;
 
 Console.WriteLine("Insert products!");
 Random rnd = new Random();
 Random rndQuantity = new Random();
 Random rndCategory = new Random();
 string[] categoryList = new string[] { "Cloth", "Electric", "Tech", "Food", "Drink" };
-for (int i = 0; i < 1000000; i++)
+for (int i = 0; i < 100; i++)
 {
     try
     {
@@ -29,8 +30,9 @@ for (int i = 0; i < 1000000; i++)
                 Images = "",
                 Category = string.Join(",", category)
             };
-            context.Add(product);
-            context.SaveChanges();
+            Console.WriteLine("Total Price: " + product.SummaryTotalPrice());
+            //context.Add(product);
+            //context.SaveChanges();
             Console.WriteLine("Inserted product! " + product.Id);
         }
     }
