@@ -15,3 +15,5 @@
 /advance-csharp.dto/obj
 /advance-csharp.service/bin/Debug/net6.0
 /advance-csharp.service/obj
+/advance-csharp.test/bin/Debug/net6.0
+/advance-csharp.test/obj
