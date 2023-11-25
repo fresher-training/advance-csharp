@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  advance-csharp:
+    image: ${DOCKER_REGISTRY-}advancecsharp
+    build:
+      context: .
+      dockerfile: advance-csharp/Dockerfile

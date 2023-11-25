@@ -17,3 +17,5 @@
 /advance-csharp.service/obj
 /advance-csharp.test/bin/Debug/net6.0
 /advance-csharp.test/obj
+/.vs
+/obj/Docker
