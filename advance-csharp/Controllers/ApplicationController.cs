@@ -9,6 +9,7 @@ namespace advance_csharp.Controllers
 {
     [Route("api/application")]
     [ApiController]
+   
     public class ApplicationController : ControllerBase
     {
         private IApplicationService _ApplicationService;
@@ -20,7 +21,26 @@ namespace advance_csharp.Controllers
 
         [Route("get-version")]
         [HttpGet()]
-        public async Task<IActionResult> Get([FromQuery] AppVersionGetListRequest request)
+        [MyAppAuthentication("User")]
+        public async Task<IActionResult> GetVersion([FromQuery] AppVersionGetListRequest request)
+        {
+            try
+            {
+                AppVersionGetListResponse response = await _ApplicationService.GetApplicationVersionList(request);
+                return new JsonResult(response);
+            }
+            catch (Exception ex)
+            {
+                // send to logging service
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [Route("get-version-admin")]
+        [HttpGet()]
+        [MyAppAuthentication("Admin")]
+        public async Task<IActionResult> GetVersionAdmin([FromQuery] AppVersionGetListRequest request)
         {
             try
             {
