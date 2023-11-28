@@ -1,5 +1,4 @@
-﻿using advance_csharp.database;
-using advance_csharp.dto.Request.AppVersion;
+﻿using advance_csharp.dto.Request.AppVersion;
 using advance_csharp.dto.Response.AppVersion;
 using advance_csharp.service;
 using advance_csharp.service.Interface;
@@ -9,7 +8,7 @@ namespace advance_csharp.Controllers
 {
     [Route("api/application")]
     [ApiController]
-   
+
     public class ApplicationController : ControllerBase
     {
         private IApplicationService _ApplicationService;
@@ -28,6 +27,12 @@ namespace advance_csharp.Controllers
             {
                 AppVersionGetListResponse response = await _ApplicationService.GetApplicationVersionList(request);
                 return new JsonResult(response);
+            }
+            catch (NullReferenceException nullEX)
+            {
+                // send to logging service
+                Console.WriteLine(nullEX.Message);
+                return StatusCode(500, nullEX.Message);
             }
             catch (Exception ex)
             {
