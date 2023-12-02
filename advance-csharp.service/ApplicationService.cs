@@ -20,7 +20,8 @@ namespace advance_csharp.service
             {
                 IQueryable<AppVersion> query = context.AppVersions
                     .Where(a => a.Version.Contains(request.Version))
-                    .OrderBy(a => a.Version); // not excute
+                    .OrderBy(a => a.Version)
+                    .AsQueryable(); // not excute
 
                 // Debug linq
                 string queryString = query
