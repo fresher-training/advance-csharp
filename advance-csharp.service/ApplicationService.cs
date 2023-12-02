@@ -18,12 +18,25 @@ namespace advance_csharp.service
             };
             using (AdvanceCsharpContext context = new AdvanceCsharpContext())
             {
-                IQueryable<AppVersion> query = context.AppVersions.Where(a=>a.Version.Contains(request.Version)); // not excute
-                appVersionGetListResponse.Data = await query.Select(a=> new AppVersionResponse
+                IQueryable<AppVersion> query = context.AppVersions
+                    .Where(a => a.Version.Contains(request.Version))
+                    .OrderBy(a => a.Version); // not excute
+
+                // Debug linq
+                string queryString = query
+                    .Skip(request.PageSize * (request.PageIndex - 1))
+                    .Take(request.PageSize).ToQueryString();
+
+                appVersionGetListResponse.Data = await query
+                    .Skip(request.PageSize * (request.PageIndex - 1))
+                    .Take(request.PageSize)
+                    .Select(a => new AppVersionResponse
                 {
                     Id = a.Id,
                     Version = a.Version
                 }).ToListAsync();
+
+                await query.CountAsync();
             }
             return appVersionGetListResponse;
         }
