@@ -11,7 +11,7 @@ namespace advance_csharp.Controllers
 
     public class ApplicationController : ControllerBase
     {
-        private IApplicationService _ApplicationService;
+        private readonly IApplicationService _ApplicationService;
 
         public ApplicationController()
         {

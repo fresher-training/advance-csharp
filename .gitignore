@@ -19,3 +19,5 @@
 /advance-csharp.test/obj
 /.vs
 /obj/Docker
+/bin/Debug
+/obj/Debug

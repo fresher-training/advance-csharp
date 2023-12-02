@@ -13,7 +13,7 @@ namespace advance_csharp
 
         public MyAppAuthenticationAttribute(string role)
         {
-            this.Role = role;
+            Role = role;
         }
 
         public override void OnActionExecuting(ActionExecutingContext context)
