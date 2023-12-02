@@ -5,26 +5,17 @@ namespace advance_csharp.dto.Response
         public DateTime Date { get; set; }
 
         private int _TemperatureC;
-        public int TemperatureC {
-            get
-            {
-                return _TemperatureC;
-            }
+        public int TemperatureC
+        {
+            get => _TemperatureC;
             set
             {
-                this._TemperatureC = value;
-                this._TemperatureF = 32 + (int)(this._TemperatureC / 0.5556);
+                _TemperatureC = value;
+                TemperatureF = 32 + (int)(_TemperatureC / 0.5556);
             }
         }
 
-        private int _TemperatureF;
-        public int TemperatureF
-        {
-            get
-            {
-                return _TemperatureF;
-            }
-        }
+        public int TemperatureF { get; private set; }
 
         public string? Summary { get; set; }
     }

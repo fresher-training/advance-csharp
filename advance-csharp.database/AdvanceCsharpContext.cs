@@ -10,7 +10,7 @@ namespace advance_csharp.database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
+            _ = optionsBuilder
                 .UseLazyLoadingProxies()
                 .UseSqlServer("Server=sql.bsite.net\\MSSQL2016;Database=appuser1001_advance_csharp;User Id=appuser1001_advance_csharp;Password=abcd123456;Trusted_Connection=False;");
         }

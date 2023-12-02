@@ -9,7 +9,7 @@ namespace advance_csharp
     /// </summary>
     public class MyAppAuthenticationAttribute : ActionFilterAttribute
     {
-        public string Role;
+        public string Role { get; set; }
 
         public MyAppAuthenticationAttribute(string role)
         {
@@ -21,10 +21,11 @@ namespace advance_csharp
             base.OnActionExecuting(context);
             if (!string.IsNullOrEmpty(Role))
             {
-                if (Role != "Admin")
+                if (Role == "Admin")
                 {
-                    context.Result = new UnauthorizedObjectResult("user is unauthorized");
+                    return;
                 }
+                context.Result = new UnauthorizedObjectResult("user is unauthorized");
             }
         }
     }

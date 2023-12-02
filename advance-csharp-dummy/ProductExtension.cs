@@ -10,7 +10,7 @@ namespace advance_csharp_dummy
     {
         public static long SummaryTotalPrice(this Product product)
         {
-            return product.Quantity * Int32.Parse(product.Price);
+            return product.Quantity * int.Parse(product.Price);
         }
     }
 }

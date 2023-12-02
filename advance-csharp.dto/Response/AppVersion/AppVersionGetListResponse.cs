@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace advance_csharp.dto.Response.AppVersion
+﻿namespace advance_csharp.dto.Response.AppVersion
 {
     public class AppVersionGetListResponse
     {

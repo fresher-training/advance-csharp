@@ -4,37 +4,33 @@ using advance_csharp.database.Models;
 using advance_csharp_dummy;
 
 Console.WriteLine("Insert products!");
-Random rnd = new Random();
-Random rndQuantity = new Random();
-Random rndCategory = new Random();
+Random rnd = new();
+Random rndQuantity = new();
+Random rndCategory = new();
 string[] categoryList = new string[] { "Cloth", "Electric", "Tech", "Food", "Drink" };
 for (int i = 0; i < 100; i++)
 {
     try
     {
-        using (AdvanceCsharpContext context = new AdvanceCsharpContext())
+        using AdvanceCsharpContext context = new();
+        int priceNum = rnd.Next(100000, 10000000);
+        int quantity = rndQuantity.Next(1, 1000);
+        int categoryNum = rndCategory.Next(1, 5);
+        List<string> category = new();
+        for (int j = 0; j < categoryNum - 1; j++)
         {
-            int priceNum = rnd.Next(100000, 10000000);
-            int quantity = rndQuantity.Next(1, 1000);
-            int categoryNum = rndCategory.Next(1, 5);
-            List<string> category = new List<string>();
-            for (int j = 0; j < categoryNum - 1; j++)
-            {
-                category.Add(categoryList[j]);
-            }
-            Product product = new Product
-            {
-                Name = "Product " + i.ToString(),
-                Price = priceNum.ToString(),
-                Quantity = quantity,
-                Images = "",
-                Category = string.Join(",", category)
-            };
-            Console.WriteLine("Total Price: " + product.SummaryTotalPrice());
-            //context.Add(product);
-            //context.SaveChanges();
-            Console.WriteLine("Inserted product! " + product.Id);
+            category.Add(categoryList[j]);
         }
+        Product product = new()
+        {
+            Name = "Product " + i.ToString(),
+            Price = priceNum.ToString(),
+            Quantity = quantity,
+            Images = "",
+            Category = string.Join(",", category)
+        };
+        Console.WriteLine("Total Price: " + product.SummaryTotalPrice());
+        Console.WriteLine("Inserted product! " + product.Id);
     }
     catch (Exception ex)
     {

@@ -6,7 +6,7 @@
 
         public DateTimeOffset CreatedAt { get; set; }
 
-        public BaseEntity()
+        protected BaseEntity()
         {
             Id = Guid.NewGuid();
             CreatedAt = DateTimeOffset.UtcNow;

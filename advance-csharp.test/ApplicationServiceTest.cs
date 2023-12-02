@@ -8,7 +8,7 @@ namespace advance_csharp.test
     [TestClass]
     public class ApplicationServiceTest
     {
-        private IApplicationService _ApplicationService;
+        private readonly IApplicationService _ApplicationService;
 
         public ApplicationServiceTest()
         {
@@ -22,7 +22,7 @@ namespace advance_csharp.test
         public async Task GetApplicationVersionListTestAsync()
         {
             // Input
-            AppVersionGetListRequest request = new AppVersionGetListRequest()
+            AppVersionGetListRequest request = new()
             {
                 PageIndex = 1,
                 PageSize = 10,
@@ -41,7 +41,7 @@ namespace advance_csharp.test
         public async Task GetApplicationVersionListWithVersionTestAsync()
         {
             // Input
-            AppVersionGetListRequest request = new AppVersionGetListRequest()
+            AppVersionGetListRequest request = new()
             {
                 PageIndex = 1,
                 PageSize = 10,
