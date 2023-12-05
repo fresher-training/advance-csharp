@@ -16,6 +16,7 @@ namespace advance_csharp.service
                 PageSize = request.PageSize,
                 PageIndex = request.PageIndex
             };
+            throw new NotImplementedException("Log4net bắt đi");
             using (AdvanceCsharpContext context = new())
             {
                 if (context.AppVersions != null)

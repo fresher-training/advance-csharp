@@ -3,6 +3,7 @@ using advance_csharp.dto.Response.AppVersion;
 using advance_csharp.service;
 using advance_csharp.service.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace advance_csharp.Controllers
 {
@@ -11,33 +12,29 @@ namespace advance_csharp.Controllers
 
     public class ApplicationController : ControllerBase
     {
-        private readonly IApplicationService _ApplicationService;
+        private readonly ILoggingService _loggingService;
+        private readonly IApplicationService _applicationService;
 
         public ApplicationController()
         {
-            _ApplicationService = new ApplicationService();
+            _applicationService = new ApplicationService();
+            _loggingService = new LoggingService();
         }
 
         [Route("get-version")]
         [HttpGet()]
-        [MyAppAuthentication("User")]
+        //[MyAppAuthentication("User")]
         public async Task<IActionResult> GetVersion([FromQuery] AppVersionGetListRequest request)
         {
             try
             {
-                AppVersionGetListResponse response = await _ApplicationService.GetApplicationVersionList(request);
+                AppVersionGetListResponse response = await _applicationService.GetApplicationVersionList(request);
                 return new JsonResult(response);
-            }
-            catch (NullReferenceException nullEX)
-            {
-                // send to logging service
-                Console.WriteLine(nullEX.Message);
-                return StatusCode(500, nullEX.Message);
             }
             catch (Exception ex)
             {
                 // send to logging service
-                Console.WriteLine(ex.Message);
+                _loggingService.LogError(ex);
                 return StatusCode(500, ex.Message);
             }
         }
@@ -49,13 +46,14 @@ namespace advance_csharp.Controllers
         {
             try
             {
-                AppVersionGetListResponse response = await _ApplicationService.GetApplicationVersionList(request);
+                AppVersionGetListResponse response = await _applicationService.GetApplicationVersionList(request);
+                _loggingService.LogInfo(JsonSerializer.Serialize(response));
                 return new JsonResult(response);
             }
             catch (Exception ex)
             {
                 // send to logging service
-                Console.WriteLine(ex.Message);
+                _loggingService.LogError(ex);
                 return StatusCode(500, ex.Message);
             }
         }
