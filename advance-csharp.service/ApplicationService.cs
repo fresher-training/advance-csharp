@@ -34,11 +34,7 @@ namespace advance_csharp.service
                     appVersionGetListResponse.Data = await query
                         .Skip(request.PageSize * (request.PageIndex - 1))
                         .Take(request.PageSize)
-                        .Select(a => new AppVersionResponse
-                        {
-                            Id = a.Id,
-                            Version = a.Version
-                        }).ToListAsync();
+                        .Select(a => a.Transform()).ToListAsync();
 
                     _ = await query.CountAsync();
                 }

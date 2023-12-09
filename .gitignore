@@ -21,3 +21,8 @@
 /obj/Docker
 /bin/Debug
 /obj/Debug
+/advance-csharp/.config
+/advance-csharp/bin
+/advance-csharp.database/bin/Release/net6.0
+/advance-csharp.dto/bin/Release/net6.0
+/advance-csharp.service/bin/Release/net6.0
